@@ -8,5 +8,5 @@ Feature: Create Contract
     When Enters all the details and clicks on the create button
     Then Add signatory
     And performs drag and drop on party element
-#    And  places signature,clicks on the sent for signature button
+    And  places signature,clicks on the sent for signature button
 #    Then contract should be sent for signature successfully

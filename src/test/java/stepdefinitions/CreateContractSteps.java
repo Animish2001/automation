@@ -133,7 +133,7 @@ public class CreateContractSteps extends BrowserActions {
 //        btn.click();
 // Step 3: Click on the matching dropdown option
         option.click();
-        WebElement btn= wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn btn-primary f-14 btn-sm']")));
+        WebElement btn= wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.DROPDOWN));
         btn.click();
         JavascriptExecutor js = (JavascriptExecutor) driver;
 // Click at (10, 10) or any coordinate away from dropdowns/buttons
@@ -141,6 +141,7 @@ public class CreateContractSteps extends BrowserActions {
 
     }
 
+    //this part is new for learning...
     @And("performs drag and drop on party element")
     public void dragAndDropParty() throws InterruptedException {
         try {
@@ -151,12 +152,12 @@ public class CreateContractSteps extends BrowserActions {
 
             // Step 2: Find the source element to drag
             WebElement fromElement = wait.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath("//div[@class='party-item' and @partyname='test' and @partyemail='animishshrivant508@gmail.com']")
+                    ReportPageLocator.SOURCE_ELE
             ));
 
             // Step 3: Find a static canvas or drop zone to drop onto
             WebElement toElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//div[@id='canvas' or contains(@class, 'page') or contains(@class, 'drop-zone')]")
+                    ReportPageLocator.TARGET_ELE
             ));
 
             // Step 4: Perform drag and drop
@@ -188,7 +189,56 @@ public class CreateContractSteps extends BrowserActions {
 //            takeScreenshot("drag_and_drop_failure");
 //            Assert.fail("Drag and drop failed");
 //        }
+    @And("places signature,clicks on the sent for signature button")
+    public void placesSignatureClicksOnTheSentForSignatureButton() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       /* WebElement AddText = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("")));
+        AddText.click();
+        Actions action = new Actions(driver);
+        action.sendKeys("This is a sample text").perform();
+        logger.info("Added text successfully");*/
+        WebElement PlaceSignature = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(@class, 'btn-primary') and contains(@class, 'w-75') and @type='button']")));
+        PlaceSignature.click();
+        logger.info("Clicked on place signature");
+//        Thread.sleep(4000);
+//        WebElement OKbutton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Ok']")));
+//        OKbutton.click();
+//        logger.info("clicked on ok button");
+//        Thread.sleep(2000);
+//        driver.findElement(By.xpath("//button[normalize-space()='Place Signature']")).click();
+//        logger.info("Clicked on place signature button");
+//        Thread.sleep(10000);
+//
+//       try {
+//
+//           wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//       /* WebElement sourceElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@partyemail='amrita@gmail.com']")));
+//        logger.info("source element is found");
+//        WebElement targetElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='1' and contains(@class, 'example-boundary')]")));
+//        logger.info("target element is found");*/
+//
+//           // Locate source and target elements
+//           WebElement sourceElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("partydiv")));
+//           System.out.println("Source element is found.");
+//           WebElement targetElement = wait.until(ExpectedConditions.elementToBeClickable(By.id("getData")));
+//           System.out.println("Target element is found.");
+//
+//           // Drag and drop for placing signature
+//           Actions actions = new Actions(driver);
+//           actions.dragAndDrop(sourceElement, targetElement).perform();
+//           System.out.println("Drag and drop action completed successfully.");
+//
+//
+//       } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//        WebElement SendforSignature= wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Share for Signature']")));
+//        SendforSignature.click();
+//        logger.info("Sent for Signature");
+
     }
+
+}
 
 
 

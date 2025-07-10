@@ -27,6 +27,9 @@ public class ReportPageLocator {
     public static final By CREATE_CONTRACT_1 = By.xpath("//button[contains(@class, 'enable-div') and contains(., 'Create contract')]");
     public static final By ADD_SIGN = By.xpath("//button[contains(@class, 'btn') and contains(@class, 'style-1')]");
     public static final By INPUT_SIGN = By.xpath("//div[@role='combobox']//input[@type='text']");
+    public static final By DROPDOWN = By.xpath("//button[@class='btn btn-primary f-14 btn-sm']");
+    public static final By SOURCE_ELE = By.xpath("//div[@class='party-item' and @partyname='test' and @partyemail='animishshrivant508@gmail.com']");
+    public static final By TARGET_ELE = By.xpath("//div[@id='canvas' or contains(@class, 'page') or contains(@class, 'drop-zone')]");
 
     //estamp
     public static final By E_STAMP = By.xpath("//span[contains(text(),'E-Stamping')]");
