@@ -8,6 +8,8 @@ import locators.ReportPageLocator;
 import org.openqa.selenium.*;
 
 import org.openqa.selenium.Point;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -172,7 +174,7 @@ public class CreateContractSteps extends BrowserActions {
 
             // Step 5: Now verify the placeholder was created as a result of the drop
             wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//div[contains(@class, 'placeholder') and @partyname='test']")
+                ReportPageLocator.PLACEHOLDER
             ));
 
             logger.info("Drag and drop successful.");
@@ -197,7 +199,7 @@ public class CreateContractSteps extends BrowserActions {
         Actions action = new Actions(driver);
         action.sendKeys("This is a sample text").perform();
         logger.info("Added text successfully");*/
-        WebElement PlaceSignature = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(@class, 'btn-primary') and contains(@class, 'w-75') and @type='button']")));
+        WebElement PlaceSignature = wait.until(ExpectedConditions.presenceOfElementLocated(ReportPageLocator.PLACE_SIGN));
         PlaceSignature.click();
         logger.info("Clicked on place signature");
 //        Thread.sleep(4000);
@@ -235,6 +237,23 @@ public class CreateContractSteps extends BrowserActions {
 //        WebElement SendforSignature= wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Share for Signature']")));
 //        SendforSignature.click();
 //        logger.info("Sent for Signature");
+
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("toast-success")));
+    }
+
+    @Given("user sends an email")
+    public void emailSent() throws InterruptedException{
+        System.setProperty("webdriver.edge.driver", "drivers/msedgedriver.exe");
+        String userProfile = "C:\\Users\\Animish\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default";
+
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("user-data-dir=" + userProfile);
+        options.addArguments("profile-directory=Profile 1");
+
+        driver = new EdgeDriver(options);
+        driver.manage().window().maximize();
+
+        driver.get("https://mail.google.com/mail/u/1/#inbox");
 
     }
 

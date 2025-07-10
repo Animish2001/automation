@@ -9,4 +9,6 @@ Feature: Create Contract
     Then Add signatory
     And performs drag and drop on party element
     And  places signature,clicks on the sent for signature button
+    Given user sends an email
+#    Then Gmail should be opened in Edge browser
 #    Then contract should be sent for signature successfully

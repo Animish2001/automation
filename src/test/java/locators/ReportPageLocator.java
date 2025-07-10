@@ -30,6 +30,8 @@ public class ReportPageLocator {
     public static final By DROPDOWN = By.xpath("//button[@class='btn btn-primary f-14 btn-sm']");
     public static final By SOURCE_ELE = By.xpath("//div[@class='party-item' and @partyname='test' and @partyemail='animishshrivant508@gmail.com']");
     public static final By TARGET_ELE = By.xpath("//div[@id='canvas' or contains(@class, 'page') or contains(@class, 'drop-zone')]");
+    public static final By PLACEHOLDER = By.xpath("//div[contains(@class, 'placeholder') and @partyname='test']");
+    public static final By PLACE_SIGN = By.xpath("//button[contains(@class, 'btn-primary') and contains(@class, 'w-75') and @type='button']");
 
     //estamp
     public static final By E_STAMP = By.xpath("//span[contains(text(),'E-Stamping')]");
