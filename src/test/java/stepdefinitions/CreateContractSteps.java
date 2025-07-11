@@ -244,7 +244,7 @@ public class CreateContractSteps extends BrowserActions {
     @Given("user sends an email")
     public void emailSent() throws InterruptedException{
         System.setProperty("webdriver.edge.driver", "drivers/msedgedriver.exe");
-        String userProfile = "C:\\Users\\Animish\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default";
+        String userProfile = "C:\\Users\\Animish\\AppData\\Local\\Microsoft\\Edge\\User Data";
 
         EdgeOptions options = new EdgeOptions();
         options.addArguments("user-data-dir=" + userProfile);
@@ -254,6 +254,9 @@ public class CreateContractSteps extends BrowserActions {
         driver.manage().window().maximize();
 
         driver.get("https://mail.google.com/mail/u/1/#inbox");
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        WebElement signin =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@class, 'header__aside__button') and span[text()='Sign in']]")));
+//        signin.click();
 
     }
 
