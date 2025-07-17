@@ -8,6 +8,7 @@ import locators.ReportPageLocator;
 import org.openqa.selenium.*;
 
 import org.openqa.selenium.Point;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Action;
@@ -243,20 +244,33 @@ public class CreateContractSteps extends BrowserActions {
 
     @Given("user sends an email")
     public void emailSent() throws InterruptedException{
-        System.setProperty("webdriver.edge.driver", "drivers/msedgedriver.exe");
-        String userProfile = "C:\\Users\\Animish\\AppData\\Local\\Microsoft\\Edge\\User Data";
+        System.setProperty("webdriver.chrome.driver", "C:\\\\Users\\\\Animish\\\\Downloads\\\\chromedriver-win64\\\\chromedriver-win64\\\\chromedriver.exe");
+//        String userProfile = "C:\\Users\\Animish\\AppData\\Local\\Microsoft\\Edge\\User Data";
+//
+//        EdgeOptions options = new EdgeOptions();
+//        options.addArguments("user-data-dir=" + userProfile);
+//        options.addArguments("profile-directory=Profile 1");
 
-        EdgeOptions options = new EdgeOptions();
-        options.addArguments("user-data-dir=" + userProfile);
-        options.addArguments("profile-directory=Profile 1");
-
-        driver = new EdgeDriver(options);
+//        driver = new EdgeDriver(options);
+//        driver.manage().window().maximize();
+//
+//        driver.get("https://mail.google.com/mail/u/1/#inbox");
+        WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
 
-        driver.get("https://mail.google.com/mail/u/1/#inbox");
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        WebElement signin =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@class, 'header__aside__button') and span[text()='Sign in']]")));
-//        signin.click();
+        // ✅ Navigate to Gmail login
+        driver.get("https://accounts.google.com/signin/v2/identifier?service=mail");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement txtbox =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='identifierId']")));
+        txtbox.click();
+        txtbox.sendKeys("animishshrivant508@gmail.com");
+
+//        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement nextbtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[normalize-space()='Next']")));
+        nextbtn.click();
+//        inputField.sendKeys(Keys.ENTER);
+
 
     }
 
