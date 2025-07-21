@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions;
         //features = {"src/test/resources/features/login.feature", "src/test/resources/features/clauseLibrary.feature"},
         glue = "stepdefinitions",
         plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"},
-        tags = "@create_contract" //Specify the tag of scenario which we want to run
+        tags = "@clause" //Specify the tag of scenario which we want to run
         //tags = "@sanity" //Basic sanity suite
         //tags = "@regression" //Basic regression suites
 
