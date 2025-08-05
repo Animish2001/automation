@@ -65,4 +65,9 @@ public class ReportPageLocator {
     public static final By CRM_1 = By.xpath("//span[@class='dropdown-btn' and //span[text()='Select Requestor']]");
     public static final By CRM_2 = By.xpath("//span[contains(text(),'Select Requestor')]/ancestor::ng-multiselect-dropdown//div[text()='Select All']");
 
+    //ai
+    public static final By AI_NAV = By.xpath("//span[contains(@class, 'menu-title') and text()='AI']");
+    public static final By DRP_DWN = By.xpath("//button[contains(@class, 'dropdown-toggle') and contains(@class, 'btn-shadow')]/img[@src='assets/icons/Icon_addguidebook_Black_Unfilled.svg']/parent::button");
+    public static final By CREATE_NEW = By.xpath("//a[contains(@class, 'dropdown-item') and contains(text(), 'Create New')]");
+    public static final By GUIDE_TITLE = By.xpath("//input[@formcontrolname='name']");
 }

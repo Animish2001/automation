@@ -8,4 +8,11 @@ Feature: AI module
     Then clicks on dropdown
     Then clicks on Create New
     Then clicks on guide title
-    Then clicks on agreement type
+#    Then clicks on agreement type
+    Then clicks on title
+    Then clicks on severity
+    Then clicks on guideline
+#    Then clicks on add field
+    Then clicks on submit
+    Then clicks on previous arrow
+    Then clicks on upload

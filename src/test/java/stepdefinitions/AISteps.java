@@ -3,10 +3,12 @@ package stepdefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.eo.Se;
 import locators.ReportPageLocator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -14,6 +16,7 @@ import utils.BrowserActions;
 import org.openqa.selenium.*;
 import utils.ConfigReader;
 
+import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.logging.Logger;
 
@@ -56,7 +59,7 @@ public class AISteps extends BrowserActions {
         try {
 //            startBrowser();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement view = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[contains(@class, 'menu-title') and text()='AI']")));
+            WebElement view = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.AI_NAV));
             view.click();
             logger.info("Clicked on ai module");
         }catch (Exception e){
@@ -70,7 +73,7 @@ public class AISteps extends BrowserActions {
     public void clickOnDropdwn(){
         try{
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement drpdwn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(@class, 'dropdown-toggle') and contains(@class, 'btn-shadow')]/img[@src='assets/icons/Icon_addguidebook_Black_Unfilled.svg']/parent::button")));
+            WebElement drpdwn = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.DRP_DWN));
             drpdwn.click();
             logger.info("Clicked on dropdown");
         }catch (Exception e){
@@ -85,7 +88,7 @@ public class AISteps extends BrowserActions {
     public void clickOnCreateNew(){
         try{
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement createnew = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(@class, 'dropdown-item') and contains(text(), 'Create New')]")));
+            WebElement createnew = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.CREATE_NEW));
             createnew.click();
             logger.info("Clicked on create new");
         }catch (Exception e){
@@ -99,7 +102,7 @@ public class AISteps extends BrowserActions {
     public void clickOnGuideTitle(){
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement guidetle = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@formcontrolname='name']")));
+            WebElement guidetle = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.GUIDE_TITLE));
             guidetle.click();
             guidetle.sendKeys("test");
             logger.info("Clicked on guide title");
@@ -110,18 +113,118 @@ public class AISteps extends BrowserActions {
         }
     }
 
-    @Then("clicks on agreement type")
-    public void clickOnAgreementType(){
-        try {
+//    @Then("clicks on agreement type")
+//    public void clickOnAgreementType(){
+//        try {
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//            WebElement agreetype = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@aria-autocomplete='list' and @autocomplete='ae44aae295f4']")));
+//            agreetype.click();
+//            logger.info("Clicked on agreement type");
+//        }catch (Exception e){
+//            logger.info("Issue while clicking on agreement type");
+//            takeScreenshot("Failed to click on agreement type");
+//            Assert.fail("Exception occurred: " + e.getMessage());
+//        }
+//    }
+
+    @Then("clicks on title")
+    public void clickOnTitle(){
+        try{
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement agreetype = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//ng-select[@formcontrolname='agreementType']//input[   @aria-autocomplete='list' and    contains(@autocomplete, 'a6a5729c1b71') and    @autocapitalize='off' ]")));
-            agreetype.click();
-            logger.info("Clicked on agreement type");
+            WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@formcontrolname='title' and contains(@class, 'form-control') and @placeholder='Enter title']")));
+            title.click();
+            title.sendKeys("test");
+            logger.info("Clicked on title");
         }catch (Exception e){
-            logger.info("Issue while clicking on agreement type");
-            takeScreenshot("Failed to click on agreement type");
+            logger.info("Issue while clicking on title");
+            takeScreenshot(("Failed to check on title"));
             Assert.fail("Exception occurred: " + e.getMessage());
         }
+    }
+
+    @Then("clicks on severity")
+    public void clickOnSeverity(){
+        WebElement severityDropdown = driver.findElement(By.xpath("//select[@formcontrolname='severity']"));
+        Select select = new Select(severityDropdown);
+        select.selectByVisibleText("High");
+        select.selectByValue("high");
+    }
+
+    @Then("clicks on guideline")
+    public void clickOnGuideline(){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement guideline = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//textarea[@formcontrolname='guideline']")));
+            guideline.click();
+            guideline.sendKeys("Enter the required guideline");
+            logger.info("clicked on guideline");
+        }catch (Exception e){
+            logger.info("Issue while clicking on guideline");
+            takeScreenshot("Failed to check on guideline");
+            Assert.fail("Exception occurred: " + e.getMessage());
+        }
+    }
+
+//    @Then("clicks on add field")
+//    public void clickOnAdd(){
+//        try {
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//            WebElement add = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[contains(@class, 'choose-file') and contains(text(), 'Add')]")));
+//            add.click();
+//        }catch (Exception e){
+//            logger.info("Issue while clicking on add field");
+//            takeScreenshot("Failed to add new field");
+//            Assert.fail("Exception occurred: " + e.getMessage());
+//        }
+//    }
+
+    @Then("clicks on submit")
+    public void clickOnSubmit(){
+        try {
+            WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement submit = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[text()='Submit' and contains(@class, 'btn-primary')]")));
+            submit.click();
+        }catch (Exception e){
+            logger.info("Issue while clicking on submit button");
+            takeScreenshot("Failed to click on submit");
+            Assert.fail("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Then("clicks on previous arrow")
+    public void clickOnPrev(){
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement previous_page = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@class, 'contract') and contains(normalize-space(), 'Create Guidebook')]")));
+            previous_page.click();
+        }catch (Exception e){
+            logger.info("Issue while clicking on previous arrow");
+            takeScreenshot("Failed to click on previous page");
+            Assert.fail("Exception occurred: " + e.getMessage());
+        }
+    }
+
+    @Then("clicks on upload")
+    public void clickOnUpload(){
+
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement upload = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@class, 'dropdown-item') and normalize-space(text())='Upload']")));
+            upload.click();
+            WebElement upload_1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[contains(@class, 'active-text') and normalize-space(text())='Browse']")));
+            upload_1.click();
+            logger.info("File xpath is found");
+
+        String file;
+        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+                //take path
+                file = ConfigReader.getProperty("uploadFileWindows_1");
+            }
+            else {
+                file = Paths.get(System.getProperty("user.home"), "Downloads", "sss.pdf").toString();
+            }
+            upload_1.sendKeys(file);
+            logger.info("File uploaded successfully");
+//            driver.findElement(By.id("stampUpload")).sendKeys(file);
     }
 
 }
