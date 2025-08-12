@@ -70,4 +70,7 @@ public class ReportPageLocator {
     public static final By DRP_DWN = By.xpath("//button[contains(@class, 'dropdown-toggle') and contains(@class, 'btn-shadow')]/img[@src='assets/icons/Icon_addguidebook_Black_Unfilled.svg']/parent::button");
     public static final By CREATE_NEW = By.xpath("//a[contains(@class, 'dropdown-item') and contains(text(), 'Create New')]");
     public static final By GUIDE_TITLE = By.xpath("//input[@formcontrolname='name']");
+
+    //create request
+    public static final By CREATE_REQ = By.xpath("//span[contains(@class,'menu-title') and normalize-space()='Contract Request']");
 }
