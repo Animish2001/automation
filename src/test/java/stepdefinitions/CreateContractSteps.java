@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import locators.ReportPageLocator;
 import org.openqa.selenium.*;
+import java.util.List;
 
 import org.openqa.selenium.Point;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -107,6 +108,22 @@ public class CreateContractSteps extends BrowserActions {
     @When("Enters all the details and clicks on the create button")
     public void add_details() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        By dlt = By.xpath("//img[   contains(concat(' ', normalize-space(@class), ' '), ' choose-file ')   and contains(concat(' ', normalize-space(@class), ' '), ' pos-top-7p ')]");
+        List<WebElement> dlticns = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(dlt));
+        System.out.println("found " + dlticns.size() + " dlticns");
+
+        for (int i =1;i<=dlticns.size();i++){
+            By indexLocator = By.xpath("//img[   contains(concat(' ', normalize-space(@class), ' '), ' choose-file ')   and contains(concat(' ', normalize-space(@class), ' '), ' pos-top-7p ')]");
+            try {
+                WebElement icn = wait.until(ExpectedConditions.elementToBeClickable(indexLocator));
+                icn.click();
+                System.out.println("clicked delete icon #" + i);
+            } catch (Exception e) {
+                System.out.println("Could not click delete icon" + i + ": " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        }
+//        dlt.click();
         WebElement createBtn = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.CREATE_CONTRACT_1));
         createBtn.click();
 //        System.out.println("Clicked on create contract");

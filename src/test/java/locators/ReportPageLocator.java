@@ -73,4 +73,7 @@ public class ReportPageLocator {
 
     //create request
     public static final By CREATE_REQ = By.xpath("//span[contains(@class,'menu-title') and normalize-space()='Contract Request']");
+    public static final By REQ_BTN = By.xpath("//button[contains(@class,'btn btn-primary style-1 ng-star-inserted')]");
+    public static final By REQ_EML = By.xpath("//input[contains(@type, 'email') and contains(@class, 'form-control bg-light border-0 style-2 ng-untouched ng-pristine ng-invalid ng-star-inserted')]");
+    public static final By DRP = By.xpath("//input[@aria-autocomplete='list'        and @type='text'        and @autocapitalize='off'        and @autocorrect='off'        and @autocomplete='a77e4c123cec']");
 }
