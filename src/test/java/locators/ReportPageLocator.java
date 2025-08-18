@@ -75,5 +75,13 @@ public class ReportPageLocator {
     public static final By CREATE_REQ = By.xpath("//span[contains(@class,'menu-title') and normalize-space()='Contract Request']");
     public static final By REQ_BTN = By.xpath("//button[contains(@class,'btn btn-primary style-1 ng-star-inserted')]");
     public static final By REQ_EML = By.xpath("//input[contains(@type, 'email') and contains(@class, 'form-control bg-light border-0 style-2 ng-untouched ng-pristine ng-invalid ng-star-inserted')]");
-    public static final By DRP = By.xpath("//input[@aria-autocomplete='list'        and @type='text'        and @autocapitalize='off'        and @autocorrect='off'        and @autocomplete='a77e4c123cec']");
+    public static final By DRP = By.xpath("//div[contains(@class,'ng-select-container')]   [ .//div[contains(@class,'ng-placeholder')][normalize-space()='Select Department'] ] //input[@aria-autocomplete='list']");
+    public static final By PANEL = By.xpath("(//div[contains(@class,'ng-dropdown-panel')])");
+//    public static final By OPT = By.xpath()
+    public static final By DRP1 = By.xpath("//div[contains(@class,'ng-select-container')]   [ .//div[contains(@class,'ng-placeholder')][normalize-space()='Select Assignee'] ] //input[@aria-autocomplete='list']");
+    public static final By PANEL1 = By.xpath("(//div[contains(@class,'ng-dropdown-panel-items scroll-host')])");
+    public static final By DRP2 = By.xpath("//div[contains(@class,'ng-select-container')]   [ .//div[contains(@class,'ng-placeholder')][normalize-space()='Select Agreement Type'] ] //input[@aria-autocomplete='list']");
+    public static final By PANEL2 = By.xpath("(//ng-dropdown-panel[contains(@class,'ng-dropdown-panel ng-star-inserted ng-select-bottom')])");
+    public static final By REQ = By.xpath("//label[starts-with(normalize-space(),'Request Name')]   /following-sibling::input[contains(concat(' ',normalize-space(@class),' '),' form-control ')]");
+    public static final By SUB = By.xpath("//button[contains(@class,'btn-primary') and normalize-space()='Create request']");
 }

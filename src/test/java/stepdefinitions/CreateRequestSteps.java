@@ -64,6 +64,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import locators.ReportPageLocator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -158,8 +159,39 @@ public class CreateRequestSteps extends BrowserActions {
             reqeml.sendKeys("animish@contractzy.io");
             logger.info("clicked on request email");
 
+            //department dropdown
             WebElement drp = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.DRP));
             drp.click();
+            WebElement panel = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.PANEL));
+            WebElement option = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,'ng-dropdown-panel')])//div[contains(@class,'ng-option') and contains(@class,'ng-option-marked')]")));
+            option.click();
+            logger.info("clicked on dept dropdown");
+
+            //assignee dropdown
+            WebElement drp1 = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.DRP1));
+            drp1.click();
+            WebElement panel1 = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.PANEL1));
+            WebElement option1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[contains(@class,'ng-dropdown-panel-items scroll-host')])//div[contains(@class,'ng-option') and contains(@class,'ng-option-marked')]")));
+            option1.click();
+            logger.info("clicked on assignee dropdown");
+
+            //agreement type dropdown
+            WebElement drp2 = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.DRP2));
+            drp2.click();
+            WebElement panel2 = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.PANEL2));
+            WebElement option2 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//ng-dropdown-panel[contains(@class,'ng-dropdown-panel ng-star-inserted ng-select-bottom')]) //div[@role='option' and contains(concat(' ',normalize-space(@class),' '),' ng-option-marked ')]")));
+            option2.click();
+            logger.info("clicked on agreement type dropdown");
+
+            //request name
+            WebElement req = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.REQ));
+            req.sendKeys("test");
+            logger.info("clicked on request name");
+
+            //submit
+            WebElement submit = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.SUB));
+            submit.click();
+            logger.info("clicked on create request button");
         }catch (Exception e){
             logger.info("issue while clicking on request email");
             takeScreenshot("failed to click on request email");

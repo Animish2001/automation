@@ -25,6 +25,7 @@ public class EstampUploadSteps extends BrowserActions {
     @Given("user is already logged in the application")
     public void user_is_on_the_login_page() {
 
+        //to start browser and perform following operations
         startBrowser();
         logger.info("Browser started and opening URL.");
         openUrl(ConfigReader.getProperty("url"));
