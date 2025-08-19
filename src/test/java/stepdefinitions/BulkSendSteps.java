@@ -1,4 +1,6 @@
 package stepdefinitions;
 
-public class BulkSendSteps {
+import utils.BrowserActions;
+
+public class BulkSendSteps extends BrowserActions {
 }
