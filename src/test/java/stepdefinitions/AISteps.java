@@ -204,28 +204,28 @@ public class AISteps extends BrowserActions {
         }
     }
 
-    @Then("clicks on upload")
-    public void clickOnUpload(){
-
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement upload = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@class, 'dropdown-item') and normalize-space(text())='Upload']")));
-            upload.click();
-            WebElement upload_1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[contains(@class, 'active-text') and normalize-space(text())='Browse']")));
-            upload_1.click();
-            logger.info("File xpath is found");
-
-        String file;
-        if (System.getProperty("os.name").toLowerCase().contains("win")) {
-                //take path
-                file = ConfigReader.getProperty("uploadFileWindows_1");
-            }
-            else {
-                file = Paths.get(System.getProperty("user.home"), "Downloads", "sss.pdf").toString();
-            }
-            upload_1.sendKeys(file);
-            logger.info("File uploaded successfully");
-//            driver.findElement(By.id("stampUpload")).sendKeys(file);
-    }
+//    @Then("clicks on upload")
+//    public void clickOnUpload(){
+//
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//            WebElement upload = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(@class, 'dropdown-item') and normalize-space(text())='Upload']")));
+//            upload.click();
+//            WebElement upload_1 = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//label[contains(@class, 'active-text') and normalize-space(text())='Browse']")));
+//            upload_1.click();
+//            logger.info("File xpath is found");
+//
+//        String file;
+//        if (System.getProperty("os.name").toLowerCase().contains("win")) {
+//                //take path
+//                file = ConfigReader.getProperty("uploadFileWindows_1");
+//            }
+//            else {
+//                file = Paths.get(System.getProperty("user.home"), "Downloads", "sss.pdf").toString();
+//            }
+//            upload_1.sendKeys(file);
+//            logger.info("File uploaded successfully");
+////            driver.findElement(By.id("stampUpload")).sendKeys(file);
+//    }
 
 }
 

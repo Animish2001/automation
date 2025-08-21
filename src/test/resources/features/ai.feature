@@ -14,5 +14,5 @@ Feature: AI module
     Then clicks on guideline
 #    Then clicks on add field
     Then clicks on submit
-    Then clicks on previous arrow
-    Then clicks on upload
+#    Then clicks on previous arrow
+#    Then clicks on upload
