@@ -109,20 +109,42 @@ public class CreateContractSteps extends BrowserActions {
     public void add_details() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         By dlt = By.xpath("//img[   contains(concat(' ', normalize-space(@class), ' '), ' choose-file ')   and contains(concat(' ', normalize-space(@class), ' '), ' pos-top-7p ')]");
-        List<WebElement> dlticns = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(dlt));
-        System.out.println("found " + dlticns.size() + " dlticns");
-
-        for (int i =1;i<=dlticns.size();i++){
-            By indexLocator = By.xpath("//img[   contains(concat(' ', normalize-space(@class), ' '), ' choose-file ')   and contains(concat(' ', normalize-space(@class), ' '), ' pos-top-7p ')]");
-            try {
-                WebElement icn = wait.until(ExpectedConditions.elementToBeClickable(indexLocator));
-                icn.click();
-                System.out.println("clicked delete icon #" + i);
-            } catch (Exception e) {
-                System.out.println("Could not click delete icon" + i + ": " + e.getMessage());
-                throw new RuntimeException(e);
-            }
+        List<WebElement> dlticns;
+        try {
+            dlticns = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(dlt));
+        } catch (org.openqa.selenium.TimeoutException te) {
+            // No icons appeared within 10s — treat as none found
+            dlticns = java.util.Collections.emptyList();
         }
+//        System.out.println("found " + dlticns.size() + " dlticns");
+        if (dlticns != null && !dlticns.isEmpty()) {
+            System.out.println("found " + dlticns.size() + " dlticns");
+
+            for (int i = 1; i <= dlticns.size(); i++) {
+                By indexLocator = By.xpath("//img[   contains(concat(' ', normalize-space(@class), ' '), ' choose-file ')   and contains(concat(' ', normalize-space(@class), ' '), ' pos-top-7p ')]");
+                try {
+                    WebElement icn = wait.until(ExpectedConditions.elementToBeClickable(indexLocator));
+                    icn.click();
+                    System.out.println("clicked delete icon #" + i);
+                } catch (Exception e) {
+                    System.out.println("Could not click delete icon" + i + ": " + e.getMessage());
+                    throw new RuntimeException(e);
+                }
+            }
+        } else {
+            System.out.println("No delete icons found; skipping delete step.");
+        }
+//        for (int i =1;i<=dlticns.size();i++){
+//            By indexLocator = By.xpath("//img[   contains(concat(' ', normalize-space(@class), ' '), ' choose-file ')   and contains(concat(' ', normalize-space(@class), ' '), ' pos-top-7p ')]");
+//            try {
+//                WebElement icn = wait.until(ExpectedConditions.elementToBeClickable(indexLocator));
+//                icn.click();
+//                System.out.println("clicked delete icon #" + i);
+//            } catch (Exception e) {
+//                System.out.println("Could not click delete icon" + i + ": " + e.getMessage());
+//                throw new RuntimeException(e);
+//            }
+//        }
 //        dlt.click();
         WebElement createBtn = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.CREATE_CONTRACT_1));
         createBtn.click();

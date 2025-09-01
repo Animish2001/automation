@@ -82,6 +82,8 @@ public class ReportPageLocator {
     public static final By PANEL1 = By.xpath("(//div[contains(@class,'ng-dropdown-panel-items scroll-host')])");
     public static final By DRP2 = By.xpath("//div[contains(@class,'ng-select-container')]   [ .//div[contains(@class,'ng-placeholder')][normalize-space()='Select Agreement Type'] ] //input[@aria-autocomplete='list']");
     public static final By PANEL2 = By.xpath("(//ng-dropdown-panel[contains(@class,'ng-dropdown-panel ng-star-inserted ng-select-bottom')])");
-    public static final By REQ = By.xpath("//label[starts-with(normalize-space(),'Request Name')]   /following-sibling::input[contains(concat(' ',normalize-space(@class),' '),' form-control ')]");
+    public static final By REQ = By.xpath("//label[starts-with(normalize-space(),'Vendor Name')]   /following-sibling::input[contains(concat(' ',normalize-space(@class),' '),' form-control ')]");
+    public static final By ADR = By.xpath("//label[starts-with(normalize-space(),'Vendor Address')]   /following-sibling::textarea[contains(concat(' ',normalize-space(@class),' '),' form-control ')]");
+    public static final By EFD = By.xpath("//label[starts-with(normalize-space(),'Effective Date *')]   /following-sibling::input[contains(concat(' ',normalize-space(@class),' '),' form-control ')]");
     public static final By SUB = By.xpath("//button[contains(@class,'btn-primary') and normalize-space()='Create request']");
 }

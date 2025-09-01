@@ -155,9 +155,9 @@ public class CreateRequestSteps extends BrowserActions {
     public void FillDts(){
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement reqeml = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.REQ_EML));
-            reqeml.sendKeys("animish@contractzy.io");
-            logger.info("clicked on request email");
+//            WebElement reqeml = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.REQ_EML));
+//            reqeml.sendKeys("animish@contractzy.io");
+//            logger.info("clicked on request email");
 
             //department dropdown
             WebElement drp = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.DRP));
@@ -183,10 +183,21 @@ public class CreateRequestSteps extends BrowserActions {
             option2.click();
             logger.info("clicked on agreement type dropdown");
 
-            //request name
+            //vendor name
             WebElement req = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.REQ));
             req.sendKeys("test");
-            logger.info("clicked on request name");
+            logger.info("clicked on vendor name");
+
+            //vendor address
+            WebElement add = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.ADR));
+            add.sendKeys("margao");
+            logger.info("clicked on vendor address");
+
+            //effective date
+            WebElement effDate = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.EFD));
+            effDate.click();
+            effDate.sendKeys(12-12-1999);
+            logger.info("clicked on effective date");
 
             //submit
             WebElement submit = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.SUB));
