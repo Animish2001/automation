@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.contractzy</groupId>
@@ -15,9 +16,8 @@
         <webdrivermanager.version>5.9.1</webdrivermanager.version>
         <slf4j.version>1.7.32</slf4j.version>
         <allure.results.directory>target/allure-results</allure.results.directory>
-        <allure.results.directory>allure-results</allure.results.directory>
-
-
+        <maven.compiler.source>17</maven.compiler.source> <!-- Optional: set your Java version -->
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
@@ -118,6 +118,7 @@
 
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -126,24 +127,12 @@
                     <includes>
                         <include>**/*TestRunner.java</include>
                     </includes>
-                    <!--systemPropertyVariables>
-                        <property>
-                            <name>cucumber.plugin</name>
-                            <value>io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm</value>
-                        </property>
-                    </systemPropertyVariables-->
                     <systemPropertyVariables>
+                        <!-- Pass allure results directory to tests -->
                         <allure.results.directory>${allure.results.directory}</allure.results.directory>
+                        <!-- Set Cucumber plugin to Allure adapter -->
+                        <cucumber.plugin>io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm</cucumber.plugin>
                     </systemPropertyVariables>
-                </configuration>
-            </plugin>
-            <!-- Other plugins -->
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
-                <configuration>
-                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
                 </configuration>
             </plugin>
 
@@ -152,10 +141,11 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.10.0</version>
                 <configuration>
-                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
+                    <resultsDirectory>${allure.results.directory}</resultsDirectory>
                 </configuration>
             </plugin>
 
         </plugins>
     </build>
+
 </project>

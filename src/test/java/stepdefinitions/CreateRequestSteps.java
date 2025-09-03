@@ -194,10 +194,10 @@ public class CreateRequestSteps extends BrowserActions {
             logger.info("clicked on vendor address");
 
             //effective date
-            WebElement effDate = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.EFD));
-            effDate.click();
-            effDate.sendKeys(12-12-1999);
-            logger.info("clicked on effective date");
+//            WebElement effDate = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.EFD));
+//            effDate.click();
+//            effDate.sendKeys(12-12-1999);
+//            logger.info("clicked on effective date");
 
             //submit
             WebElement submit = wait.until(ExpectedConditions.elementToBeClickable(ReportPageLocator.SUB));

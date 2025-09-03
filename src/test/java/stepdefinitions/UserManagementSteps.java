@@ -27,11 +27,11 @@ public class UserManagementSteps extends BrowserActions {
 
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='inputEmail']")));
-            usernameField.sendKeys("amrita.tamte@contractzy.io");
+            usernameField.sendKeys("prajot@thelegalcapsule.com");
             logger.info("Entered username.");
 
             WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@id='inputPassword']")));
-            passwordField.sendKeys("Amrita@1234");
+            passwordField.sendKeys("admin");
             logger.info("Entered password.");
 
             WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));

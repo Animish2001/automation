@@ -52,7 +52,7 @@ public class ReportPageLocator {
     public static final By OPTION = By.xpath("//ng-multiselect-dropdown[@formcontrolname='dept']//ul[contains(@class, 'item')]/li[@class='multiselect-item-checkbox ng-star-inserted'][3]");
     public static final By OPTION_1 = By.xpath("//body[@id='bodyElement']/app-root[1]/div[1]/app-main-layout[1]/div[1]/div[1]/app-reports[1]/div[1]/div[3]/app-report-list[1]/div[2]/form[1]/div[1]/ng-multiselect-dropdown[1]/div[1]/div[2]/ul[2]/li[6]/div[1]");
     public static final By OPTION_2 = By.xpath("//span[text()='Select User']");
-    public static final By OPTION_3 = By.xpath("//div[text()='animish']");
+    public static final By OPTION_3 = By.xpath("//div[text()='Prajot Borkar']");
     public static final By OPTION_4 = By.xpath("//span[contains(text(),'Select Priority')]");
     public static final By OPTION_5 = By.xpath("//div[normalize-space()='Low']");
     public static final By OPTION_6 = By.xpath("//div[normalize-space()='Normal']");
